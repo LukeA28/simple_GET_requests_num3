@@ -4,16 +4,19 @@ function getDogImage() {
   fetch(`https://dog.ceo/api/breed/${$('.value').val()}/images/random`)
     .then(response => response.json())
     .then(responseJson => 
-      displayResults(responseJson.message))
-    .catch(error => alert('Something went wrong. Try again later.'));
+      displayResults(responseJson))
+    .catch(error => console.error(`${responseJson.message} is not a valid breed.`));
 }
 
 function displayResults(responseJson) {
     console.log(responseJson);
-    $('.result_image').replaceWith(`<img src="${responseJson}" alt="random_breed" class="result_image">`);
+    $('.result_image').replaceWith(
+      `<img src="${responseJson.message}" class="result_image">`);
     //display the results section
-    $('.results').removeClass('hidden');
-  }
+    if (responseJson.status !== "error") {
+      $('.results').removeClass('hidden');
+    }
+}
 
 function watchForm() {
   $('form').submit(event => {

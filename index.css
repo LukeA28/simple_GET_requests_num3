@@ -4,7 +4,7 @@ body {
     flex-direction: column;
 }
 
-.hidden {
+section.hidden {
     display: none;
 }
 
@@ -16,6 +16,7 @@ body {
 }
 
 .result_image {
+    display: inherit;
     width: 300px;
     height: 300px;
 }
