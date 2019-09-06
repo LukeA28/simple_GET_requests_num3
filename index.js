@@ -5,15 +5,15 @@ function getDogImage() {
     .then(response => response.json())
     .then(responseJson => 
       displayResults(responseJson))
-    .catch(error => console.error(`${responseJson.message} is not a valid breed.`));
+    .catch(error => alert(`${$('.value').val()} is not a valid breed.`));
 }
 
 function displayResults(responseJson) {
     console.log(responseJson);
-    $('.result_image').replaceWith(
-      `<img src="${responseJson.message}" class="result_image">`);
-    //display the results section
     if (responseJson.status !== "error") {
+      $('.result_image').replaceWith(
+        `<img src="${responseJson.message}" class="result_image">`);
+      //display the results section
       $('.results').removeClass('hidden');
     }
 }
